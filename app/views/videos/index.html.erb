@@ -25,7 +25,7 @@
             <tr>
               <td><%= video.title %></td>
               <td><%= video.description %></td>
-              <td><%= video.url %></td>
+              <td><%= link_to 'Video', video.url %></td>
               <td><%= video.tags %></td>
               <td><%= link_to 'Show', video %></td>
               <td><%= link_to 'Edit', edit_video_path(video) %></td>
