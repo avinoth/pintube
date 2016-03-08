@@ -14,11 +14,26 @@
  *= require_self
  */
 
+/*Bootstrap Overrides*/
+
 .jumbotron {
-  background-color: #82A1A4 !important;
+  background-color: #82A1A4;
+  border-radius: 0px !important;
+}
+
+a {
+  color: black !important;
 }
 
 a:hover {
   text-decoration: none;
   background-color: transparent;
+}
+
+.tags {
+  line-height: 2em;
+}
+
+.tags .label {
+  font-weight: 300;
 }

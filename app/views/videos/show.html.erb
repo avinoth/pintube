@@ -1,9 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="jumbotron">
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Url:</strong>
-  <%= @video.url %>
-</p>
+      <p class="lead"><%= link_to @video.title, @video.url, target: "_blank" %></p>
 
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+      <%= link_to 'Edit', edit_video_path(@video) %> |
+      <%= link_to 'Delete', @video, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+
+    <div class="col-md-6 col-md-offset-2">
+      <%= raw @video.embed %>
+    </div>
+
+    <div class="col-md-4">
+      <div class="row">
+        <%= @video.description %>
+      </div>
+      <hr />
+      <div class="row tags">
+        <% @video.tags.each do |tag| %>
+          <%= link_to tag, root_path, class: "label label-info" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
