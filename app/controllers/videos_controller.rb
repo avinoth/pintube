@@ -31,7 +31,7 @@ class VideosController < ApplicationController
         format.html { redirect_to @video, notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
       else
-        format.html { render :new }
+        format.html { render :new, notice: "Error processing the URL. Check if it's a valid Youtube URL." }
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end

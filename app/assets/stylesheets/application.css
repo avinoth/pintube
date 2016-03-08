@@ -37,3 +37,7 @@ a:hover {
 .tags .label {
   font-weight: 300;
 }
+
+#error_explanation {
+  width: auto;
+}

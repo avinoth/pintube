@@ -18,7 +18,7 @@
 
             <div class="panel-body">
               <div class="col-md-6">
-                <%= link_to image_tag(video.thumbnail), video.url, target: "_blank"  %>
+                <%= link_to image_tag(thumbnail_for video.url), video.url, target: "_blank"  %>
               </div>
               <div class="col-md-6">
                 <%= truncate(video.description, length: 50) %>

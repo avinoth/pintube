@@ -3,14 +3,17 @@
     <div class="jumbotron">
       <p id="notice"><%= notice %></p>
 
-      <p class="lead"><%= link_to @video.title, @video.url, target: "_blank" %></p>
+      <p class="lead">
+        <%= link_to @video.title, @video.url, target: "_blank" %>
+        <span class="glyphicon glyphicon-new-window"></span>
+      </p>
 
       <%= link_to 'Edit', edit_video_path(@video) %> |
       <%= link_to 'Delete', @video, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
 
     <div class="col-md-6 col-md-offset-2">
-      <%= raw @video.embed %>
+      <%= raw(embed_video @video.url) %>
     </div>
 
     <div class="col-md-4">
