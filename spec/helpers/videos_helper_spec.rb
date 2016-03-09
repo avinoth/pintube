@@ -10,6 +10,20 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe VideosHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe VideosHelper do
+  before(:each) do
+    @video = Video.create url: "https://www.youtube.com/watch?v=9bZkp7q19f0"
+  end
+
+  describe "embed_video" do
+    it "returns iframe tag for a video URL" do
+      expect(embed_video(@video.url)).to eq(yt_video(@video.url).embed_html)
+    end
+  end
+
+  describe "thumbnail_for" do
+    it "returns the thumbnail image for a video URL" do
+      expect(thumbnail_for(@video.url)).to eq(yt_video(@video.url).thumbnail_url)
+    end
+  end
 end
