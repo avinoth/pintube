@@ -10,7 +10,7 @@ class Video < ActiveRecord::Base
     begin
       yt_video.title
     rescue
-      errors.add(:url, "should be a valid Youtube URL.")
+      errors.add(:url, "could not be processed. Please check if it's a valid YouTube URL.")
     end
   end
 
