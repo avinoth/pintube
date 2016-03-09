@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe VideosController, type: :controller do
+RSpec.describe VideosController do
 
   let(:valid_attributes) {
     {url: "https://www.youtube.com/watch?v=9bZkp7q19f0"}
