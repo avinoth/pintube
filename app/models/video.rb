@@ -1,4 +1,7 @@
 class Video < ActiveRecord::Base
+  has_many :groupings
+  has_many :boards, through: :groupings
+
   validates :url, presence: true, uniqueness: true
   validate :youtube_url
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309152242) do
+ActiveRecord::Schema.define(version: 20160310161605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20160309152242) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "groupings", force: :cascade do |t|
+    t.integer  "board_id",   null: false
+    t.integer  "video_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "groupings", ["board_id", "video_id"], name: "index_groupings_on_board_id_and_video_id", unique: true, using: :btree
 
   create_table "videos", force: :cascade do |t|
     t.string   "url"

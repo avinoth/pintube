@@ -15,4 +15,5 @@ RSpec.describe "Videos" do
       expect(response).to have_http_status(200)
       expect(response).to render_template(:new)
     end
+  end
 end
