@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  resources :boards
   resources :videos
+
+  resources :boards do
+    member do
+      get 'add' => 'boards#add_video'
+      post 'add' => 'boards#map_video'
+    end
+  end
+
+
 
   root 'videos#index'
   # The priority is based upon order of creation: first created -> highest priority.

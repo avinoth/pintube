@@ -1,0 +1,22 @@
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= link_to video.title, video %>
+    </div>
+
+    <div class="panel-body">
+      <div class="col-md-6">
+        <%= link_to image_tag(thumbnail_for video.url), video.url, target: "_blank"  %>
+      </div>
+      <div class="col-md-6">
+        <%= truncate(video.description, length: 50) %>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <% video.tags.first(2).each do |tag| %>
+        | <%= link_to tag, root_path %>
+      <% end %>
+    </div>
+  </div>
+</div>

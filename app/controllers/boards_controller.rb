@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit, :update, :destroy]
+  before_action :set_board, only: [:show, :edit, :update, :destroy, :map_video]
 
   # GET /boards
   # GET /boards.json
@@ -10,6 +10,7 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
+    @videos = @board.videos.all
   end
 
   # GET /boards/new
@@ -58,6 +59,19 @@ class BoardsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to boards_url, notice: 'Board was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def add_video
+    @videos = Video.all
+  end
+
+  def map_video
+    @grouping = @board.groupings.new({video_id: params[:video]})
+    if @grouping.save
+      redirect_to boards_url, notice: "Video successfully added to your Board."
+    else
+     redirect_to add_board_path, notice: "We're having some troubles adding the video to the board."
     end
   end
 
