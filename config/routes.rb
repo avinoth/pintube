@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :boards
   resources :videos
 
   root 'videos#index'

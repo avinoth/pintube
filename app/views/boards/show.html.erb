@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="jumbotron">
+      <p id="notice"><%= notice %></p>
+
+      <p class="lead">
+        <%= link_to @board.name, @board %>
+      </p>
+
+      <%= link_to 'Edit', edit_board_path(@board) %> |
+      <%= link_to 'Delete', @board, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+
+  </div>
+</div>
+
+
