@@ -24,11 +24,11 @@ RSpec.describe BoardsController, type: :controller do
   # Board. As you add validations to Board, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: "Funny"}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {name: ""}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,14 @@ RSpec.describe BoardsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: "Action"}
       }
 
       it "updates the requested board" do
         board = Board.create! valid_attributes
         put :update, {:id => board.to_param, :board => new_attributes}, valid_session
         board.reload
-        skip("Add assertions for updated state")
+        expect(board.name).to eq(new_attributes[:name])
       end
 
       it "assigns the requested board as @board" do

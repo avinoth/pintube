@@ -35,5 +35,13 @@ RSpec.describe BoardsController, type: :routing do
       expect(:delete => "/boards/1").to route_to("boards#destroy", :id => "1")
     end
 
+    it "routes to #add_video" do
+      expect(:get => "/boards/1/add").to route_to("boards#add_video", id: "1")
+    end
+
+    it "routes to #map_video" do
+      expect(:post => "/boards/1/add").to route_to("boards#map_video", id: "1")
+    end
+
   end
 end
