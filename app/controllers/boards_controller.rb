@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit, :update, :destroy, :map_video]
+  before_action :set_board, only: [:show, :edit, :update, :destroy, :add_video, :map_video]
 
   # GET /boards
   # GET /boards.json
@@ -63,15 +63,15 @@ class BoardsController < ApplicationController
   end
 
   def add_video
-    @videos = Video.all
+    @videos = Video.not_mapped @board.id
   end
 
   def map_video
     @grouping = @board.groupings.new({video_id: params[:video]})
     if @grouping.save
-      redirect_to boards_url, notice: "Video successfully added to your Board."
+      redirect_to @board, notice: "Video successfully added to your Board."
     else
-     redirect_to add_board_path, notice: "We're having some troubles adding the video to the board."
+     redirect_to @board, notice: "We're having some troubles adding the video to the board. Please try again."
     end
   end
 
