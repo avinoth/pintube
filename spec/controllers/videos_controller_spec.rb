@@ -10,19 +10,21 @@ RSpec.describe VideosController do
     {url: 'abcdefgh'}
   }
 
+  before(:each) do
+    @video = Video.create!({url: "https://www.youtube.com/watch?v=VugtWhufJhI"})
+  end
+
   describe "GET #index" do
     it "assigns all videos as @videos" do
-      video = Video.create! valid_attributes
       get :index
-      expect(assigns(:videos)).to eq([video])
+      expect(assigns(:videos)).to eq([@video])
     end
   end
 
   describe "GET #show" do
     it "assigns the requested video as @video" do
-      video = Video.create! valid_attributes
-      get :show, {id: video.id}
-      expect(assigns(:video)).to eq(video)
+      get :show, {id: @video.id}
+      expect(assigns(:video)).to eq(@video)
     end
   end
 
@@ -35,9 +37,8 @@ RSpec.describe VideosController do
 
   describe "GET #edit" do
     it "assigns the requested video as @video" do
-      video = Video.create! valid_attributes
-      get :edit, {id: video.id}
-      expect(assigns(:video)).to eq(video)
+      get :edit, {id: @video.id}
+      expect(assigns(:video)).to eq(@video)
     end
   end
 
@@ -87,35 +88,30 @@ RSpec.describe VideosController do
       }
 
       it "updates the requested video" do
-        video = Video.create! valid_attributes
-        put :update, {id: video.id, video: new_attributes}
-        video.reload
-        expect(video.url).to eq(new_attributes[:url])
+        put :update, {id: @video.id, video: new_attributes}
+        @video.reload
+        expect(@video.url).to eq(new_attributes[:url])
       end
 
       it "assigns the requested video as @video" do
-        video = Video.create! valid_attributes
-        put :update, {id: video.id, video: valid_attributes}
-        expect(assigns(:video)).to eq(video)
+        put :update, {id: @video.id, video: valid_attributes}
+        expect(assigns(:video)).to eq(@video)
       end
 
       it "redirects to the video" do
-        video = Video.create! valid_attributes
-        put :update, {id: video.id, video: valid_attributes}
-        expect(response).to redirect_to(video)
+        put :update, {id: @video.id, video: valid_attributes}
+        expect(response).to redirect_to(@video)
       end
     end
 
     context "with invalid params" do
       it "assigns the video as @video" do
-        video = Video.create! valid_attributes
-        put :update, {id: video.id, video: invalid_attributes}
-        expect(assigns(:video)).to eq(video)
+        put :update, {id: @video.id, video: invalid_attributes}
+        expect(assigns(:video)).to eq(@video)
       end
 
       it "re-renders the 'edit' template" do
-        video = Video.create! valid_attributes
-        put :update, {id: video.id, video: invalid_attributes}
+        put :update, {id: @video.id, video: invalid_attributes}
         expect(response).to render_template("edit")
       end
 
@@ -128,15 +124,13 @@ RSpec.describe VideosController do
 
   describe "DELETE #destroy" do
     it "destroys the requested video" do
-      video = Video.create! valid_attributes
       expect {
-        delete :destroy, {id: video.id}
+        delete :destroy, {id: @video.id}
       }.to change(Video, :count).by(-1)
     end
 
     it "redirects to the videos list" do
-      video = Video.create! valid_attributes
-      delete :destroy, {id: video.id}
+      delete :destroy, {id: @video.id}
       expect(response).to redirect_to(videos_url)
     end
   end
