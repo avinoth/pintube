@@ -1,6 +1,12 @@
 <div class="container">
   <div class="row">
     <p id="notice"><%= notice %></p>
+    <% if params[:tag].present? %>
+      <div class="col-md-12">
+        Videos tagged <%= params[:tag] %>
+        <%= link_to 'Clear', root_path %>
+      </div>
+    <% end %>
     <div class="col-md-8">
       <h1>Your Videos</h1>
     </div>

@@ -23,7 +23,7 @@
       <hr />
       <div class="row tags">
         <% @video.tags.each do |tag| %>
-          <%= link_to tag, root_path, class: "label label-info" %>
+          <%= link_to tag, root_path(tag: tag), class: "label label-info" %>
         <% end %>
       </div>
     </div>

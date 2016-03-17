@@ -15,7 +15,7 @@
 
     <div class="panel-footer">
       <% video.tags.first(2).each do |tag| %>
-        | <%= link_to tag, root_path %>
+        | <%= link_to tag, root_path(tag: tag) %>
       <% end %>
     </div>
   </div>

@@ -4,7 +4,11 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    if params[:tag].present?
+      @videos = Video.tagged(params[:tag])
+    else
+      @videos = Video.all
+    end
   end
 
   # GET /videos/1

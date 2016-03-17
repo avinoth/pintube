@@ -7,6 +7,8 @@ class Video < ActiveRecord::Base
 
   before_save :update_meta_info
 
+  scope :tagged, -> (tags) {where('tags @> ARRAY[?]::varchar[]', [tags].flatten.compact)}
+
   def self.not_mapped board_id
     joins("LEFT OUTER JOIN (SELECT * FROM groupings WHERE board_id = #{board_id}) g
       ON videos.id = g.video_id WHERE g.video_id IS NULL")
